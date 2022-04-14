@@ -8,3 +8,14 @@ The calculator uses a method involving equations developed at the Naval Health R
 - **For women only**: Measure the circumference of the subject's hips at the largest horizontal measure
 
 Once these measurements are obtained, in inches, the program will use the equations to calculate the body fat percentage for males and females respectively. 
+
+### The American Council on Exercise Body Fat Categorization
+| Description     | Women | Men |
+| ----------- | ----------- | ----------- |
+| Essential fat      | 	10-13%       | 2-5%       |
+| Athletes   | 	14-20%        | 6-13%        |
+| Fitness   | 21-24%        | 	14-17%        |
+| Average   | 25-31%        | 	18-24%        |
+| Obese   | 32+%        | 	25+%        |
+
+### Potential Complications of Excess Body Fat
