@@ -22,7 +22,7 @@ def calculate_male():
     FM = BFP * weight
     LM = weight - FM
 
-    indexBMI_M(BFP)
+    indexBF_M(BFP)
     
 def calculate_female():
     age = int(age_tf.get())
@@ -43,23 +43,33 @@ def calculate_female():
     FM = BFP * weight
     LM = weight - FM
 
-    indexBMI_F(BFP)
+    indexBF_F(BFP)
 
-def indexBMI_F(BFP):
-    if BFP < 16.0:
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is severely underweight')
-    elif (BFP > 16.0) and (BFP < 18.4):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is underweight')
-    elif (BFP > 18.4) and (BFP < 24.9):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is normal')
-    elif (BFP > 24.9) and (BFP < 29.9):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is overweight')
-    elif (BFP > 29.9) and (BFP < 34.9):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is moderately obese')
-    elif (BFP > 34.9) and (BFP < 39.9):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is severly obese')
+def indexBF_F(BFP):
+    if (BFP > 10) and (BFP < 13):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is called essential fat')
+    elif (BFP > 14) and (BFP < 20):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is within the athletes range')
+    elif (BFP > 21) and (BFP < 24):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is considered in the fitness level')
+    elif (BFP > 25) and (BFP < 31):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is average')
     elif (BFP > 32):
-        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is morbidly obese') 
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is  obese') 
+    else:
+        messagebox.showerror('Body Fat Estimate', 'something went wrong!')
+
+def indexBF_M(BFP):
+    if (BFP > 2) and (BFP < 5):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is called essential fat')
+    elif (BFP > 6) and (BFP < 13):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is within the athletes range')
+    elif (BFP > 14) and (BFP < 17):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is considered in the fitness level')
+    elif (BFP > 18) and (BFP < 24):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is average')
+    elif (BFP > 25):
+        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!') 
         
@@ -69,7 +79,7 @@ def reset_entry():
     weight_tf.delete(0,'end')
 
 ws = Tk()
-ws.title('PythonGuides')
+ws.title('Body Fat Calculator')
 ws.geometry('400x300')
 ws.config(bg='#686e70')
 
