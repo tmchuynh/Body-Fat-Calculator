@@ -22,7 +22,7 @@ def calculate_male():
     FM = BFP * weight
     LM = weight - FM
 
-    indexBMI(BFP)
+    indexBMI_M(BFP)
     
 def calculate_female():
     age = int(age_tf.get())
@@ -43,25 +43,25 @@ def calculate_female():
     FM = BFP * weight
     LM = weight - FM
 
-    indexBMI(BFP)
+    indexBMI_F(BFP)
 
-def indexBMI(bmi):
-    if bmi < 16.0:
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is severely underweight')
-    elif (bmi > 16.0) and (bmi < 18.4):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is underweight')
-    elif (bmi > 18.4) and (bmi < 24.9):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is normal')
-    elif (bmi > 24.9) and (bmi < 29.9):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is overweight')
-    elif (bmi > 29.9) and (bmi < 34.9):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is moderately obese')
-    elif (bmi > 34.9) and (bmi < 39.9):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is severly obese')
-    elif (bmi > 40.0):
-        messagebox.showinfo('bmi-pythonguides', f'BMI = {bmi} is morbidly obese') 
+def indexBMI_F(BFP):
+    if BFP < 16.0:
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is severely underweight')
+    elif (BFP > 16.0) and (BFP < 18.4):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is underweight')
+    elif (BFP > 18.4) and (BFP < 24.9):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is normal')
+    elif (BFP > 24.9) and (BFP < 29.9):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is overweight')
+    elif (BFP > 29.9) and (BFP < 34.9):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is moderately obese')
+    elif (BFP > 34.9) and (BFP < 39.9):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is severly obese')
+    elif (BFP > 32):
+        messagebox.showinfo('Body Fat Estimate', f'BMI = {BFP} is morbidly obese') 
     else:
-        messagebox.showerror('bmi-pythonguides', 'something went wrong!') 
+        messagebox.showerror('Body Fat Estimate', 'something went wrong!') 
         
 def reset_entry():
     age_tf.delete(0,'end')
