@@ -19,9 +19,6 @@ def calculate_male():
     second_half = 70.041 * (math.log10(height))
 
     BFP = first_half - second_half + 36.76
-    
-    FM = BFP * lb
-    LM = lb - FM
 
     indexBF_M(BFP)
     
@@ -41,8 +38,6 @@ def calculate_female():
     second_half = 97.684 * (math.log10(height))
 
     BFP = first_half - second_half - 78.387
-    FM = BFP * lb
-    LM = lb - FM
 
     indexBF_F(BFP)
 
