@@ -2,9 +2,15 @@ from tkinter import *
 from tkinter import messagebox
 
 def calculate_us_BMI():
-    lb = int(weight_tf.get())
+    age = int(age_tf.get())
     feet = float(height_tf.get())
     inch = feet * 12
+
+    lb = int(weight_tf.get())
+
+    neck = float(neck_tf.get())
+    waist = float(waist_tf.get())
+
     bmi = (lb / (inch * inch)) * 703
     bmi = round(bmi, 1)
     indexBMI(bmi)
@@ -64,7 +70,7 @@ select_lb = Label(
 
 us_rb = Checkbutton(
     frame2,
-    text = 'US',
+    text = 'Male',
     variable = var,
     onvalue = 1,
     offvalue = 0,
@@ -73,7 +79,7 @@ us_rb = Checkbutton(
 
 metric_rb = Checkbutton(
     frame2,
-    text = 'Metric',
+    text = 'Female',
     variable = var,
     onvalue = 2,
     offvalue = 0,
