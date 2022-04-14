@@ -47,29 +47,29 @@ def calculate_female():
 
 def indexBF_F(BFP):
     if (BFP > 10) and (BFP < 13):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is called essential fat')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is called essential fat')
     elif (BFP > 14) and (BFP < 20):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is within the athletes range')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is within the athletes range')
     elif (BFP > 21) and (BFP < 24):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is considered in the fitness level')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is considered in the fitness level')
     elif (BFP > 25) and (BFP < 31):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is average')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is average')
     elif (BFP > 32):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is  obese') 
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!')
 
 def indexBF_M(BFP):
     if (BFP > 2) and (BFP < 5):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is called essential fat')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is called essential fat')
     elif (BFP > 6) and (BFP < 13):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is within the athletes range')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is within the athletes range')
     elif (BFP > 14) and (BFP < 17):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is considered in the fitness level')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is considered in the fitness level')
     elif (BFP > 18) and (BFP < 24):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is average')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is average')
     elif (BFP > 25):
-        messagebox.showinfo('Body Fat Estimate', f'BF = {BFP} is  obese') 
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!') 
         
@@ -222,6 +222,6 @@ neck_tf.grid(row=1, column=2)
 
 
 
-frame2.grid(row=5, columnspan=3, pady=10)
+frame2.grid(row=6, columnspan=3, pady=10)
 
 ws.mainloop()
