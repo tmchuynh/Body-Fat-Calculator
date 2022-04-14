@@ -7,7 +7,7 @@ def calculate_male():
     age = int(age_tf.get())
     height = float(height_tf.get())
 
-    weight = int(weight_tf.get())
+    lb = float(weight_tf.get())
 
     hip = float(hip_tf.get())
     neck = float(neck_tf.get())
@@ -19,8 +19,9 @@ def calculate_male():
     second_half = 70.041 * (math.log10(height))
 
     BFP = first_half - second_half + 36.76
-    FM = BFP * weight
-    LM = weight - FM
+    
+    FM = BFP * lb
+    LM = lb - FM
 
     indexBF_M(BFP)
     
@@ -28,7 +29,7 @@ def calculate_female():
     age = int(age_tf.get())
     height = float(height_tf.get())
 
-    weight = int(weight_tf.get())
+    lb = float(weight_tf.get())
 
     hip = float(hip_tf.get())
     neck = float(neck_tf.get())
@@ -40,8 +41,8 @@ def calculate_female():
     second_half = 97.684 * (math.log10(height))
 
     BFP = first_half - second_half - 78.387
-    FM = BFP * weight
-    LM = weight - FM
+    FM = BFP * lb
+    LM = lb - FM
 
     indexBF_F(BFP)
 
