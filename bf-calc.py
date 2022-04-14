@@ -1,26 +1,49 @@
 from tkinter import *
 from tkinter import messagebox
+import math
 
-def calculate_us_BMI():
+
+def calculate_male():
     age = int(age_tf.get())
-    feet = float(height_tf.get())
-    inch = feet * 12
+    height = float(height_tf.get())
 
-    lb = int(weight_tf.get())
+    weight = int(weight_tf.get())
 
+    hip = float(hip_tf.get())
     neck = float(neck_tf.get())
     waist = float(waist_tf.get())
 
-    bmi = (lb / (inch * inch)) * 703
-    bmi = round(bmi, 1)
-    indexBMI(bmi)
+    m1 = waist - neck;
+    first_half = 86.010 * (math.log10(m1))
+
+    second_half = 70.041 * (math.log10(height))
+
+    BFP = first_half - second_half + 36.76
+    FM = BFP * weight
+    LM = weight - FM
+
+    indexBMI(BFP)
     
-def calculate_metric_BMI():
-    kg = int(weight_tf.get())
-    m = float(height_tf.get())
-    bmi = kg / (m * m)
-    bmi = round(bmi, 1)
-    indexBMI(bmi)
+def calculate_female():
+    age = int(age_tf.get())
+    height = float(height_tf.get())
+
+    weight = int(weight_tf.get())
+
+    hip = float(hip_tf.get())
+    neck = float(neck_tf.get())
+    waist = float(waist_tf.get())
+
+    m1 = waist + hip - neck;
+    first_half = 163.205 * (math.log10(m1))
+
+    second_half = 97.684 * (math.log10(height))
+
+    BFP = first_half - second_half - 78.387
+    FM = BFP * weight
+    LM = weight - FM
+
+    indexBMI(BFP)
 
 def indexBMI(bmi):
     if bmi < 16.0:
@@ -65,25 +88,25 @@ frame2 = Frame(
 
 select_lb = Label(
     frame2,
-    text='Select Mode'
+    text='Select Gender'
 )
 
-us_rb = Checkbutton(
+male_rb = Checkbutton(
     frame2,
     text = 'Male',
     variable = var,
     onvalue = 1,
     offvalue = 0,
-    command = calculate_us_BMI
+    command = calculate_male
 )
 
-metric_rb = Checkbutton(
+female_rb = Checkbutton(
     frame2,
     text = 'Female',
     variable = var,
     onvalue = 2,
     offvalue = 0,
-    command = calculate_metric_BMI
+    command = calculate_female
 )
 
 frame3 = Frame(
@@ -105,12 +128,12 @@ frame4 = Frame(
 
 height_lb = Label(
     frame4,
-    text="Enter Height (ft or m)  "
+    text="Enter Height (inches)  "
 )
 
 weight_lb = Label(
     frame4,
-    text="Enter Weight (lbs or kg)  "
+    text="Enter Weight (lbs)  "
 )
 
 height_tf = Entry(
@@ -135,7 +158,7 @@ neck_tf = Entry(
 
 neck_lb = Label(
     frame5,
-    text="Enter neck measurements (ft or m)  "
+    text="Enter neck measurements (inches)  "
 )
 
 waist_tf = Entry(
@@ -144,13 +167,26 @@ waist_tf = Entry(
 
 waist_lb = Label(
     frame6,
-    text="Enter waist measurements (ft or m)  "
+    text="Enter waist measurements (inches)  "
+)
+
+frame7 = Frame(
+    frame
+)
+
+hip_lb = Label(
+    frame7,
+    text="Enter hip measurements (inches)  "
+)
+
+hip_tf = Entry(
+    frame7,
 )
 
 frame2.grid(row=0, column=2, pady=5)
 select_lb.grid(row=1, column=0)
-us_rb.grid(row=1, column=1)
-metric_rb.grid(row=1, column=2)
+male_rb.grid(row=1, column=1)
+female_rb.grid(row=1, column=2)
 
 frame3.grid(row=1, column=2, pady=3)
 age_lb.grid(row=1, column=0)
@@ -166,7 +202,11 @@ frame5.grid(row=3, column=2, pady=5)
 waist_lb.grid(row=1, column=1)
 waist_tf.grid(row=1, column=2)
 
-frame6.grid(row=4, column=2, pady=5)
+frame7.grid(row=4, column=2, pady=5)
+hip_lb.grid(row=1, column=1)
+hip_tf.grid(row=1, column=2)
+
+frame6.grid(row=5, column=2, pady=5)
 neck_lb.grid(row=1, column=1)
 neck_tf.grid(row=1, column=2)
 
