@@ -1,57 +1,48 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import math
 
 
-def calculate_male():
+def calculate_us_BMI():
+    lb = int(weight_tf.get())
+    inch = float(height_tf.get())
+    bmi = (lb / (inch * inch)) * 703
+    bmi = round(bmi, 1)
+
+    if (female_rb.state() == "checked"):
+        calculate_female(bmi)
+    else:
+        calculate_male(bmi)
+
+def calculate_male(bmi):
     age = int(age_tf.get())
-    height = float(height_tf.get())
 
-    lb = float(weight_tf.get())
+    BFP = (1.20 * bmi) + (0.23 * age) - 16.2
 
-    hip = float(hip_tf.get())
-    neck = float(neck_tf.get())
-    waist = float(waist_tf.get())
-
-    m1 = waist - neck;
-    first_half = 86.010 * (math.log10(m1))
-
-    second_half = 70.041 * (math.log10(height))
-
-    BFP = first_half - second_half + 36.76
-
+    print("bmi " + str(bmi))
     indexBF_M(BFP)
     
-def calculate_female():
+def calculate_female(bmi):
     age = int(age_tf.get())
-    height = float(height_tf.get())
 
-    lb = float(weight_tf.get())
+    BFP = (1.20 * bmi) + (0.23 * age) - 5.4
+    BFP_1 = int(BFP)
 
-    hip = float(hip_tf.get())
-    neck = float(neck_tf.get())
-    waist = float(waist_tf.get())
-
-    m1 = waist + hip - neck;
-    first_half = 163.205 * (math.log10(m1))
-
-    second_half = 97.684 * (math.log10(height))
-
-    BFP = first_half - second_half - 78.387
-
-    indexBF_F(BFP)
+    print("bmi " + str(bmi))
+    indexBF_F(BFP_1)
 
 def indexBF_F(BFP):
     if (BFP > 10) and (BFP < 13):
-        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is called essential fat')
+        messagebox.showinfo('Body Fat Estimate', 'BFP = ' + round(BFP) + ' is called essential fat')
     elif (BFP > 14) and (BFP < 20):
-        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is within the athletes range')
+        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is within the athletes range')
     elif (BFP > 21) and (BFP < 24):
-        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is considered in the fitness level')
+        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is considered in the fitness level')
     elif (BFP > 25) and (BFP < 31):
-        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is average')
+        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is average')
     elif (BFP > 32):
-        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is  obese') 
+        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!')
 
@@ -68,6 +59,7 @@ def indexBF_M(BFP):
         messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!') 
+    print("bf " + str(BFP))
         
 def reset_entry():
     age_tf.delete(0,'end')
@@ -97,22 +89,22 @@ select_lb = Label(
     text='Select Gender'
 )
 
-male_rb = Checkbutton(
+male_rb = ttk.Checkbutton(
     frame2,
     text = 'Male',
     variable = var,
     onvalue = 1,
     offvalue = 0,
-    command = calculate_male
+    command = calculate_us_BMI
 )
 
-female_rb = Checkbutton(
+female_rb = ttk.Checkbutton(
     frame2,
     text = 'Female',
     variable = var,
     onvalue = 2,
     offvalue = 0,
-    command = calculate_female
+    command = calculate_us_BMI
 )
 
 frame3 = Frame(
@@ -150,45 +142,6 @@ weight_tf = Entry(
     frame4,
 )
 
-frame5 = Frame(
-    frame
-)
-
-frame6 = Frame(
-    frame
-)
-
-neck_tf = Entry(
-    frame5,
-)
-
-neck_lb = Label(
-    frame5,
-    text="Enter neck measurements (inches)  "
-)
-
-waist_tf = Entry(
-    frame6,
-)
-
-waist_lb = Label(
-    frame6,
-    text="Enter waist measurements (inches)  "
-)
-
-frame7 = Frame(
-    frame
-)
-
-hip_lb = Label(
-    frame7,
-    text="Enter hip measurements (inches)  "
-)
-
-hip_tf = Entry(
-    frame7,
-)
-
 frame2.grid(row=0, column=2, pady=5)
 select_lb.grid(row=1, column=0)
 male_rb.grid(row=1, column=1)
@@ -203,20 +156,6 @@ height_lb.grid(row=1, column=1)
 weight_lb.grid(row=2, column=1)
 height_tf.grid(row=1, column=2, pady=5)
 weight_tf.grid(row=2, column=2, pady=5)
-
-frame5.grid(row=3, column=2, pady=5)
-waist_lb.grid(row=1, column=1)
-waist_tf.grid(row=1, column=2)
-
-frame7.grid(row=4, column=2, pady=5)
-hip_lb.grid(row=1, column=1)
-hip_tf.grid(row=1, column=2)
-
-frame6.grid(row=5, column=2, pady=5)
-neck_lb.grid(row=1, column=1)
-neck_tf.grid(row=1, column=2)
-
-
 
 frame2.grid(row=6, columnspan=3, pady=10)
 
