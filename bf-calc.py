@@ -27,22 +27,21 @@ def calculate_female(bmi):
     age = int(age_tf.get())
 
     BFP = (1.20 * bmi) + (0.23 * age) - 5.4
-    BFP_1 = int(BFP)
 
     print("bmi " + str(bmi))
-    indexBF_F(BFP_1)
+    indexBF_F(BFP)
 
 def indexBF_F(BFP):
     if (BFP > 10) and (BFP < 13):
-        messagebox.showinfo('Body Fat Estimate', 'BFP = ' + round(BFP) + ' is called essential fat')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is called essential fat')
     elif (BFP > 14) and (BFP < 20):
-        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is within the athletes range')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is within the athletes range')
     elif (BFP > 21) and (BFP < 24):
-        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is considered in the fitness level')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is considered in the fitness level')
     elif (BFP > 25) and (BFP < 31):
-        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is average')
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is average')
     elif (BFP > 32):
-        messagebox.showinfo('Body Fat Estimate', 'BFP =  ' + round(BFP) + '  is  obese') 
+        messagebox.showinfo('Body Fat Estimate', f'BFP = {BFP} is  obese') 
     else:
         messagebox.showerror('Body Fat Estimate', 'something went wrong!')
 
